@@ -1,0 +1,260 @@
+<div class="box">
+    <h1>Example: Count Bits</h1>
+    As an example, consider a program that takes in an integer, and returns the number of bits required to represent it.
+    This can be done in C as follows:<br>
+    <b>int count(unsigned int a) {</b>
+    <b>&emsp;int res = 0;</b>
+    <b>&emsp;while (a) {</b>
+    <b>&emsp;&emsp;a >>= 1;</b>
+    <b>&emsp;&emsp;res++;</b>
+    <b>&emsp;}</b>
+    <b>&emsp;return res;</b>
+    <b>}</b><br>
+    Compiling using gcc with flag -O2, yields the following, with 88 bits.<br>
+    <table id="instructionTable">
+        <thead>
+            <tr>
+                <th>Line</th>
+                <th>RISC-V Assembly</th>
+                <th class="right-align">RISC-V Machine Code</th>
+                <th class="right-align">Number of '1' Bits</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>count:</td>
+                <td class="right-align">Label: count</td>
+                <td class="right-align"></td>
+            </tr>
+            <tr id="inst0">
+                <td>0</td>
+                <td>input a0</td>
+                <td class="right-align"><span class="funct7">00000000000000000</span><span
+                        class="funct3">000</span><span class="rd">01010</span><span class="opcode">1110011</span></td>
+                <td class="right-align">7</td>
+            </tr>
+            <tr id="inst1">
+                <td>1</td>
+                <td>mv a5,a0</td>
+                <td class="right-align"><span class="imm">000000000000</span><span class="rsone">01010</span><span
+                        class="funct3">000</span><span class="rd">01111</span><span class="opcode">0010011</span></td>
+                <td class="right-align">9</td>
+            </tr>
+            <tr id="inst2">
+                <td>2</td>
+                <td>li a0,0</td>
+                <td class="right-align"><span class="imm">000000000000</span><span class="rsone">00000</span><span
+                        class="funct3">000</span><span class="rd">01010</span><span class="opcode">0010011</span></td>
+                <td class="right-align">5</td>
+            </tr>
+            <tr id="inst3">
+                <td>3</td>
+                <td>beq a5,zero,.L4</td>
+                <td class="right-align"><span class="imm">0000000</span><span class="rs2">00000</span><span
+                        class="rsone">01111</span><span class="funct3">000</span><span class="imm">10100</span><span
+                        class="opcode">1100011</span></td>
+                <td class="right-align">10</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>.L3:</td>
+                <td class="right-align">Label: .L3</td>
+                <td class="right-align"></td>
+            </tr>
+            <tr id="inst4">
+                <td>4</td>
+                <td>srli a5,a5,1</td>
+                <td class="right-align"><span class="funct7">0000000</span><span class="imm">00001</span><span
+                        class="rsone">01111</span><span class="funct3">101</span><span class="rd">01111</span><span
+                        class="opcode">0010011</span></td>
+                <td class="right-align">14</td>
+            </tr>
+            <tr id="inst5">
+                <td>5</td>
+                <td>addi a0,a0,1</td>
+                <td class="right-align"><span class="imm">000000000001</span><span class="rsone">01010</span><span
+                        class="funct3">000</span><span class="rd">01010</span><span class="opcode">0010011</span></td>
+                <td class="right-align">8</td>
+            </tr>
+            <tr id="inst6">
+                <td>6</td>
+                <td>bne a5,zero,.L3</td>
+                <td class="right-align"><span class="imm">1111111</span><span class="rs2">00000</span><span
+                        class="rsone">01111</span><span class="funct3">001</span><span class="imm">11001</span><span
+                        class="opcode">1100011</span></td>
+                <td class="right-align">19</td>
+            </tr>
+            <tr id="inst7">
+                <td>7</td>
+                <td>output a0</td>
+                <td class="right-align"><span class="funct7">00000000000000000</span><span
+                        class="funct3">001</span><span class="rd">01010</span><span class="opcode">1110011</span></td>
+                <td class="right-align">8</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>.L4:</td>
+                <td class="right-align">Label: .L4</td>
+                <td class="right-align"></td>
+            </tr>
+            <tr id="inst8">
+                <td>8</td>
+                <td>output a0</td>
+                <td class="right-align"><span class="funct7">00000000000000000</span><span
+                        class="funct3">001</span><span class="rd">01010</span><span class="opcode">1110011</span></td>
+                <td class="right-align">8</td>
+            </tr>
+        </tbody>
+    </table><br>
+    Renaming registers, and deleting unneeded lines reduces the bit count to 49.
+    <table id="instructionTable">
+        <thead>
+            <tr>
+                <th>Line</th>
+                <th>RISC-V Assembly</th>
+                <th class="right-align">RISC-V Machine Code</th>
+                <th class="right-align">Number of '1' Bits</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>count:</td>
+                <td class="right-align">Label: count</td>
+                <td class="right-align"></td>
+            </tr>
+            <tr id="inst0" class="">
+                <td>0</td>
+                <td>input x2</td>
+                <td class="right-align"><span class="funct7">00000000000000000</span><span
+                        class="funct3">000</span><span class="rd">00010</span><span class="opcode">1110011</span></td>
+                <td class="right-align">6</td>
+            </tr>
+            <tr id="inst1">
+                <td>1</td>
+                <td>beq x2,zero,.L4</td>
+                <td class="right-align"><span class="imm">0000000</span><span class="rs2">00000</span><span
+                        class="rsone">00010</span><span class="funct3">000</span><span class="imm">10000</span><span
+                        class="opcode">1100011</span></td>
+                <td class="right-align">6</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>.L3:</td>
+                <td class="right-align">Label: .L3</td>
+                <td class="right-align"></td>
+            </tr>
+            <tr id="inst2">
+                <td>2</td>
+                <td>srli x2,x2,1</td>
+                <td class="right-align"><span class="funct7">0000000</span><span class="imm">00001</span><span
+                        class="rsone">00010</span><span class="funct3">101</span><span class="rd">00010</span><span
+                        class="opcode">0010011</span></td>
+                <td class="right-align">8</td>
+            </tr>
+            <tr id="inst3">
+                <td>3</td>
+                <td>addi x1,x1,1</td>
+                <td class="right-align"><span class="imm">000000000001</span><span class="rsone">00001</span><span
+                        class="funct3">000</span><span class="rd">00001</span><span class="opcode">0010011</span></td>
+                <td class="right-align">6</td>
+            </tr>
+            <tr id="inst4">
+                <td>4</td>
+                <td>bne x2,zero,.L3</td>
+                <td class="right-align"><span class="imm">1111111</span><span class="rs2">00000</span><span
+                        class="rsone">00010</span><span class="funct3">001</span><span class="imm">11001</span><span
+                        class="opcode">1100011</span></td>
+                <td class="right-align">16</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>.L4:</td>
+                <td class="right-align">Label: .L4</td>
+                <td class="right-align"></td>
+            </tr>
+            <tr id="inst5">
+                <td>5</td>
+                <td>output x1</td>
+                <td class="right-align"><span class="funct7">00000000000000000</span><span
+                        class="funct3">001</span><span class="rd">00001</span><span class="opcode">1110011</span></td>
+                <td class="right-align">7</td>
+            </tr>
+        </tbody>
+    </table><br>
+    We see that almost a third of the bits are in just the bne instruction. This is because it uses a negative relative
+    branch, and since RISC-V stores immediates as two's complement, negative immediates will have a lot of `1` bits.
+    Replacing the backwards branch with a JALR that jumps forward relative to `x0` saves 10 bits, bringing the total
+    down to 39.
+    <table id="instructionTable">
+        <thead>
+            <tr>
+                <th>BP</th>
+                <th>Line</th>
+                <th>RISC-V Assembly</th>
+                <th class="right-align">RISC-V Machine Code</th>
+                <th class="right-align">Number of '1' Bits</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="inst0" class="">
+                <td> </td>
+                <td>0</td>
+                <td>input x2</td>
+                <td class="right-align"><span class="funct7">00000000000000000</span><span
+                        class="funct3">000</span><span class="rd">00010</span><span class="opcode">1110011</span></td>
+                <td class="right-align">6</td>
+            </tr>
+            <tr id="inst1">
+                <td> </td>
+                <td>1</td>
+                <td>beq x2,zero,return</td>
+                <td class="right-align"><span class="imm">0000000</span><span class="rs2">00000</span><span
+                        class="rsone">00010</span><span class="funct3">000</span><span class="imm">10000</span><span
+                        class="opcode">1100011</span></td>
+                <td class="right-align">6</td>
+            </tr>
+            <tr id="inst2">
+                <td> </td>
+                <td>2</td>
+                <td>srli x2,x2,1</td>
+                <td class="right-align"><span class="funct7">0000000</span><span class="imm">00001</span><span
+                        class="rsone">00010</span><span class="funct3">101</span><span class="rd">00010</span><span
+                        class="opcode">0010011</span></td>
+                <td class="right-align">8</td>
+            </tr>
+            <tr id="inst3">
+                <td> </td>
+                <td>3</td>
+                <td>addi x1,x1,1</td>
+                <td class="right-align"><span class="imm">000000000001</span><span class="rsone">00001</span><span
+                        class="funct3">000</span><span class="rd">00001</span><span class="opcode">0010011</span></td>
+                <td class="right-align">6</td>
+            </tr>
+            <tr id="inst4">
+                <td> </td>
+                <td>4</td>
+                <td>jalr x0,x0,4</td>
+                <td class="right-align"><span class="imm">000000000100</span><span class="rsone">00000</span><span
+                        class="funct3">000</span><span class="rd">00000</span><span class="opcode">1100111</span></td>
+                <td class="right-align">6</td>
+            </tr>
+            <tr>
+                <td> </td>
+                <td></td>
+                <td>return:</td>
+                <td class="right-align">Label: return</td>
+                <td class="right-align"></td>
+            </tr>
+            <tr id="inst5">
+                <td> </td>
+                <td>5</td>
+                <td>output x1</td>
+                <td class="right-align"><span class="funct7">00000000000000000</span><span
+                        class="funct3">001</span><span class="rd">00001</span><span class="opcode">1110011</span></td>
+                <td class="right-align">7</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,8 @@
+const title="Tutorial";
+const url="tutorial";
+const summary="<div style='background-color:yellow'>Hi, welcome to Bit Golf! Click here to see more info on getting started.</div> If you already know how to play, the challenge is to multiply the input by 25.";
+const details="Your goal is to minimize the number of <b>1</b> bits in the machine code for each challenge. You can see your count in the box below this, and the top 10 lowest on the leaderboard for reference (bottom left).<br><br>Your code must pass all of the testcases listed here, as well as some hidden ones on the server. You can click a testcase to select it, and then use breakpoints and step-by-step execution to debug the behavior with that input.<br><br>To read the input value(s), use <b>input rd</b>, a custom ECALL. To output the result and halt the VM, use <b>output rs1</b>.<br><br><br>Now for your first challenge: Take in a number, multiply it by 25, and output it.<br><br>RV32I does not have a built in multiply operand, so you will have to do this with addition and bitshifts.<br><br><br>";
+const constraints="This section is where any constraints on the input values will be listed. Usually, the constraints will limit the input and output values to 32 bit signed or unsigned values.<br><br>For this challenge, <b>0 <= 25*n < 2^32</b><br><br><br>How does the number of bits you used compare to the lowest value on the leaderboard? Can you use the property that 25=5^2 to reduce the bits used by adding a jump instruction?";
+const difficulty=['Tutorial', '#08f', '#8cf'];
+const input_type = "int";
+const tests=[[[0], 0], [[1], 25], [[25], 625], [[77], 1925], [[123456789], 3086419725]];

@@ -1,0 +1,118 @@
+1.0.0
+05-Apr-2025
+ - Implemented the RV32M instructions
+ - Players can switch between RV32I and RV32IM modes, and challenges will save their score separately for both modes.
+ - Implemented a register debugger, where you can click on registers to marks them, and marked registers will trigger a breakpoint when they are written to.
+
+0.6.3
+03-Apr-2025
+- Italicize string input to help distinguish them from integer inputs
+- Change strings inputs to only allow a single string
+
+0.6.2
+03-Apr-2025
+- Enable viewing the score history of players, even if you have not beaten them
+
+0.6.1
+31-Mar-2025
+- If the next instruction will access memory, highlight that cell gray in the memory viewer
+
+0.6.0
+30-Mar-2025
+- Added a memory viewer
+
+0.5.1
+29-Mar-2025
+- Added progress wheel visualizations to profile page
+
+0.5.0
+29-Mar-2025
+- Added a profile page
+- Added ble, bleu, bgt, bgtu, seqz, snez pseudoinstructions, and nops custom pseudoinstruction
+- Added account create date and last login to users table
+
+0.4.0
+28-Mar-2025
+- On the leaderboard, you can now load past submissions
+- When submitting, your code will be saved if it has the same or lower score as your previous best
+- [ctrl]+click on a player in the leaderboard to show a list of their past submissions
+
+0.3.5
+27-Mar-2025
+- All submitted code with score <= your current best will be saved, whereas before only the best score's code was saved
+- This is in preparation for the ability to load your and others' past submissions
+- Restructured the code storage file structure
+
+0.3.4
+09-Sep-2024
+- Added new challenges: Simple Collatz, and Parse Int
+
+0.3.3
+08-Sep-2024
+- Added a 60s timeout to leaderboard submission
+
+0.3.2
+23-Jul-2024
+- Add fade timeout to the auth required text on submission
+
+0.3.1
+23-Jul-2024
+- Added feature to create aliases for registers using #
+
+0.3.0
+21-Jul-2024
+- Allow the player to create a custom testcase
+- Add support for string-type inputs
+- Added a tutorial challenge
+
+0.2.1
+20-Jul-2021
+- Fix SLTIU bug
+- Halt on non-aligned PC
+- Added display for the selected cycle limit
+- Make the challenges element on the homepage scrollable
+
+0.2.0
+20-Jul-2024
+- Added editor indentation shortcuts [Tab], [Ctrl]+[, [Ctrl]+], [Backspace]
+
+0.1.2
+19-Jul-2024
+- Fix AUIPC off by 4 bug
+- Correct the endianness of load + store helper functions
+- Define LBU and LHU
+
+0.1.1
+19-Jul-2024
+- Refactored the verification script to write the asm to a file, and then pass the file path, fixing an issue with a limit on long strings in the command line argv values
+- Added client-side check for code length <= 64KiB
+
+0.1.0
+19-Jul-2024
+- Enable loading code from other players if you have a better score
+- Added difficulty indicator for the challenges
+- Fix a bug with the redirect on login
+
+0.0.4
+19-Jul-2024
+- Added option to change the cycle limit
+- Added more information about the assembler to the ISA page
+
+0.0.3
+19-Jul-2024
+- Added a client-side check for auth on code submission
+- The selected testcase is now remembered across reloads
+
+0.0.2
+19-Jul-2024
+- SQL auth moved to a separate file
+- Player's scores now display next to challenges on the homepage
+
+0.0.1
+19-Jul-2024
+- Added Find Root challenge
+- Fixed bug in the value saved to register by JAL and JALR
+
+0.0.0
+19-Jul-2024
+- Initial release

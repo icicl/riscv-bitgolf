@@ -1,0 +1,211 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 90%;
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    flex: 1;
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.box-link {
+    flex: 1;
+    overflow-y: none;
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #fff;
+}
+.box-link:hover {
+    border: 1px solid black;
+}
+.box-link-active {
+    flex: 1;
+    overflow-y: none;
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed #000;
+}
+.box-link-active:hover {
+    border: 1px solid black;
+}
+
+.outline-on-hover {
+    border: 1px solid #fff;
+}
+
+.outline-on-hover:hover {
+    border: 1px solid black;
+}
+
+.navbar-box:hover {
+    background-color: #eee;
+}
+
+.vertical-divider {
+    width: 10px;
+    min-width: 10px;
+    cursor: ew-resize;
+    z-index: 1;
+}
+
+.horizontal-divider {
+    height: 10px;
+    min-height: 10px;
+    cursor: ns-resize;
+    z-index: 1;
+}
+
+.navbar {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 40px;
+    line-height: 20px;
+    font-size: 12px;
+    display: flex;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif, monospace;
+    height: 100vh;
+    overflow: hidden;
+    margin: 20px;
+    display: flex;
+    background-color: #eee;
+    flex-direction: column;
+}
+
+div {
+    font-family: monospace;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 3px;
+}
+
+th {
+    text-align: left;
+}
+
+b {
+    background-color: #ccc;
+}
+
+b.white {
+    background-color: #fff;
+}
+
+textarea {
+    resize: none;
+    min-height: 80px;
+}
+.highlight {
+    border: 2px solid red;
+    outline: unset;
+}
+
+
+.progress-wheel {
+    width: 80%;
+    margin:10%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, white 84%, transparent 85% 100%, white 0), conic-gradient(darkgreen 50%, lightgreen 0%);
+}
+
+
+
+.table-container {
+    font-family: monospace;
+    display: block;
+}
+
+.execute-button-container {
+    display: flex;
+    height: 30px;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.execute-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid black;
+    background-color: white;
+    transition: background-color 0.3s;
+}
+
+.execute-button:hover {
+    background-color: lightgray;
+}
+
+.execute-button:first-child {
+    border-left: none;
+}
+
+.full-width {
+    flex: 1;
+}
+
+.right-align {
+    text-align: right;
+}
+.center-align {
+    text-align: center;
+}
+
+.active-line {
+    background-color: #bfb;
+}
+
+.opcode {
+    color: green;
+}
+
+.rd {
+    color: red;
+}
+
+.funct3 {
+    color: green;
+}
+
+.funct7 {
+    color: green;
+}
+
+.rsone {
+    color: orange;
+}
+
+.rs2 {
+    color: blue;
+}
+
+.imm {
+    color: purple;
+}
